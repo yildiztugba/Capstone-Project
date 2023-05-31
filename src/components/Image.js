@@ -11,7 +11,9 @@ function Image({className,img}){
         } else if(hovered){
             return <i className="ri-heart-line favorite" onClick={() => context.toggleFavorite(img.id)}></i>
         }
-    }  const cartIcon = hovered && <i className="ri-add-circle-line cart"></i>
+    }  
+    
+    const cartIcon = hovered && <i onClick={()=>context.addToCart(img)} className="ri-add-circle-line cart"></i>
     
     return(
         <div 
@@ -24,7 +26,6 @@ function Image({className,img}){
             {cartIcon}
         </div>
     )
-   
 }
 Image.propTypes = {
     className: PropTypes.string,
