@@ -4,8 +4,13 @@ function Image({className,img}){
     const [hovered, setHovered] = useState(false)
     const context = useContext(Context)
 
-    const heartIcon = hovered && <i onClick={()=>context.toggleFavorite(img.id)} className="ri-heart-line favorite"></i>
-    const cartIcon = hovered && <i className="ri-add-circle-line cart"></i>
+    function heartIcon () {
+        if(img.isFavorite){
+            return <i onClick={()=>context.toggleFavorite(img.id)} className="ri-heart-fill favorite"></i>
+        } else if(hovered){
+            return <i className="ri-heart-line favorite" onClick={() => context.toggleFavorite(img.id)}></i>
+        }
+    }  const cartIcon = hovered && <i className="ri-add-circle-line cart"></i>
     
     return(
         <div 
@@ -14,7 +19,7 @@ function Image({className,img}){
         onMouseLeave={()=>setHovered(false)}
         >
             <img  src={img.url} className="image-grid" />
-            {heartIcon}
+            {heartIcon()}
             {cartIcon}
         </div>
     )
