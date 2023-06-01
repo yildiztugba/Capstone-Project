@@ -17,7 +17,7 @@ function CartItem({item}) {
             >
             </i>
             
-            <img src={item.url} width="130px" alt="picture"/>
+            <img src={item.url} width="130px" alt="randomImg2"/>
             <p>$5.99</p>
         </div>
     )
